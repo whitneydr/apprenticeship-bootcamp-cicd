@@ -36,7 +36,7 @@ let DefaultTaxCalculator = class DefaultTaxCalculator extends TaxCalculator {
         } else {
           return 2070;
         }
-      } else {
+      } else if (vehicle.fuelType === "Diesel") {
         if (vehicle.co2Emissions === 0) {
           return 0;
         } else if (vehicle.co2Emissions >= 1 && vehicle.co2Emissions <= 50) {
@@ -64,6 +64,36 @@ let DefaultTaxCalculator = class DefaultTaxCalculator extends TaxCalculator {
         } else {
           return 2070;
         }
+      } else if (vehicle.fuelType === "Alternative fuel") {
+        if (vehicle.co2Emissions === 0) {
+          return 0;
+        } else if (vehicle.co2Emissions >= 1 && vehicle.co2Emissions <= 50) {
+          return 0;
+        } else if (vehicle.co2Emissions >= 51 && vehicle.co2Emissions <= 75) {
+          return 15;
+        } else if (vehicle.co2Emissions >= 76 && vehicle.co2Emissions <= 90) {
+          return 95;
+        } else if (vehicle.co2Emissions >= 91 && vehicle.co2Emissions <= 100) {
+          return 115;
+        } else if (vehicle.co2Emissions >= 101 && vehicle.co2Emissions <= 110) {
+          return 135;
+        } else if (vehicle.co2Emissions >= 111 && vehicle.co2Emissions <= 130) {
+          return 155;
+        } else if (vehicle.co2Emissions >= 131 && vehicle.co2Emissions <= 150) {
+          return 195;
+        } else if (vehicle.co2Emissions >= 151 && vehicle.co2Emissions <= 170) {
+          return 505;
+        } else if (vehicle.co2Emissions >= 171 && vehicle.co2Emissions <= 190) {
+          return 820;
+        } else if (vehicle.co2Emissions >= 191 && vehicle.co2Emissions <= 225) {
+          return 1230;
+        } else if (vehicle.co2Emissions >= 226 && vehicle.co2Emissions <= 255) {
+          return 1750;
+        } else {
+          return 2060;
+        }
+      } else {
+        return 0
       }
   }
 }
